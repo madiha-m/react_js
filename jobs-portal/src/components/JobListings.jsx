@@ -5,6 +5,9 @@ import JobListing from './JobListing'
 const JobListings = () => {
     // console.log(jobs); 
 
+    // limit number of jobs showing on the home page
+    const recentJobs = jobs.slice(0, 3);
+
     return (
         <section className="bg-blue-50 px-4 py-10">
             <div className="container-xl-lg: container m-auto">
@@ -13,9 +16,9 @@ const JobListings = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                    {/* replacing Jobs array vio map */}
-                    {jobs.map((job) => (
-                        <JobListing key={job.id} job={job}/>
+                    {/* replacing Jobs array via map */}
+                    {recentJobs.map((job) => (
+                        <JobListing key={job.id} job={job} />
                     ))}
                 </div>
             </div>
