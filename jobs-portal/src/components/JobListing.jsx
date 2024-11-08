@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const JobListing = ({ job }) => {
-    const [showFullDesc, setShowFullDesc] = useState(false);
+    const [showFullDesc, setShowFullDesc] = useState(false); 
 
     let description = job.description;
 
@@ -19,7 +19,7 @@ const JobListing = ({ job }) => {
 
                 <div className="mb-5">
                     {description}
-                    <button className="text-indigo-500 mb-5 hover:text-indigo-600">
+                    <button onClick={()=> setShowFullDesc((preState)=> !preState)} className="text-indigo-500 mb-5 hover:text-indigo-600">
                         {showFullDesc ? 'Less' : 'Show'}
                     </button>
                 </div>
