@@ -2,11 +2,11 @@ import React from 'react'
 import jobs from '../jobs.json'
 import JobListing from './JobListing'
 
-const JobListings = () => {
+const JobListings = ({ isHome = false }) => {
     // console.log(jobs); 
 
     // limit number of jobs showing on the home page
-    const recentJobs = jobs.slice(0, 3);
+    const jobListings = isHome ? jobs.slice(0, 3) : jobs;
 
     return (
         <section className="bg-blue-50 px-4 py-10">
@@ -17,7 +17,7 @@ const JobListings = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
                     {/* replacing Jobs array via map */}
-                    {recentJobs.map((job) => (
+                    {jobListings.map((job) => (
                         <JobListing key={job.id} job={job} />
                     ))}
                 </div>

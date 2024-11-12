@@ -19,9 +19,12 @@ const JobListing = ({ job }) => {
                     <h3 className="text-xl font-bold">{job.title}</h3>
                 </div>
 
-                <div className="mb-5">
-                    {description}
-                    <button onClick={() => setShowFullDesc((preState) => !preState)} className="text-indigo-500 mb-5 hover:text-indigo-600">
+                <div className="mb-5">{description}
+
+                    <button
+                        onClick={() => setShowFullDesc((preState) => !preState)}
+                        className="text-indigo-500 mb-5 hover:text-indigo-600"
+                    >
                         {showFullDesc ? 'Less' : 'Show'}
                     </button>
                 </div>
