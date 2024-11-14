@@ -23,9 +23,10 @@ const JobPage = () => {
     }, [])
 
     return (
-        <>
-            loading ? Spinner : <h1>Job data {id}</h1>
-        </>
+        loading ? <Spinner /> :
+            <>
+                <h1>Job data {id}</h1>
+            </>
     )
 }
 
