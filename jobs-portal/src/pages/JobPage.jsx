@@ -1,17 +1,15 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 
 const JobPage = () => {
     const { id } = useParams();
-    // const [loading, setLoading] = useState(true);
-
+    const job = useLoaderData();
 
     return (
-        loading ? <Spinner /> :
-            <>
-                <h1>Job data {id}</h1>
-            </>
+        <>
+            <h1>Job title: {job.title}</h1>
+        </>
     )
 }
 
