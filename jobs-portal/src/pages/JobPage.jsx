@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const JobPage = ({ deleteJob }) => {
     const navigate = useNavigate();
@@ -10,9 +11,13 @@ const JobPage = ({ deleteJob }) => {
     const deleteJobClick = (jobId) => {
         const confirm = window.confirm('Are you sure? This job will no longer to return.')
 
-        if (!confirm) return;
+        if (!confirm) {
+toast.error('Job deletion canceled.')
+            return;
+        }
 
         deleteJob(jobId);
+        toast.success('Job Deleted successfully.')
 
         navigate('/jobs');
     }
