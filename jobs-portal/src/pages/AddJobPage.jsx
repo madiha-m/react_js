@@ -11,13 +11,19 @@ const AddJobPage = () => {
     const [contactEmail, setContactEmail] = useState('');
     const [contactPhone, setContactPhone] = useState('');
 
+    const submitForm = (e) => {
+        e.preventDefault();
+
+        console.log(contactEmail);
+    };
+
     return (
         <>
             <section className='bg-indigo-50'>
                 <div className="container m-auto max-w-2xl py-24">
                     <div
                         className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
-                        <form>
+                        <form onSubmit={submitForm} autoComplete='off'>
                             <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
                             <div className="mb-4">
                                 <label
@@ -39,6 +45,7 @@ const AddJobPage = () => {
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700 font-bold mb-2"
+                                    htmlFor='title'
                                 >Job Listing Name</label>
                                 <input
                                     type="text"
@@ -68,7 +75,7 @@ const AddJobPage = () => {
                             </div>
                             <div className="mb-4">
                                 <label
-                                    htmlFor="type"
+                                    htmlFor="salary"
                                     className="block text-gray-700 font-bold mb-2"
                                 >Salary</label>
                                 <select
@@ -79,7 +86,8 @@ const AddJobPage = () => {
                                     value={salary}
                                     onChange={(e) => setSalary(e.target.value)}
                                 >
-                                    <option option value="Under $50K">under $50K</option>
+                                    <option value="500">500</option>
+                                    <option value="Under $50K">under $50K</option>
                                     <option value="$50-60K">$50-$60K</option>
                                     <option value="$60-70K">$60-$70K</option>
                                     <option value="$70-70K">$70-$80K</option>
@@ -93,7 +101,9 @@ const AddJobPage = () => {
                                 </select>
                             </div>
                             <div className='mb-4'>
-                                <label className='block text-gray-700 font-bold mb-2'>
+                                <label
+                                    htmlFor="location"
+                                    className='block text-gray-700 font-bold mb-2'>
                                     Location
                                 </label>
                                 <input
