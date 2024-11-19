@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
 
 const JobPage = ({ deleteJob }) => {
+    const navigate = useNavigate();
     const { id } = useParams();
     const job = useLoaderData();
 
@@ -12,6 +13,8 @@ const JobPage = ({ deleteJob }) => {
         if (!confirm) return;
 
         deleteJob(jobId);
+
+        navigate('/jobs');
     }
 
     return (
