@@ -83,20 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "e0bd",
-      "title": "Junior Developer",
-      "type": "Full-Time",
-      "location": "Lahore",
-      "description": "This is test description",
-      "salary": "$70-70K",
-      "company": {
-        "name": "Test Comapny",
-        "companyDescription": "Compnyt description",
-        "contactEmail": "madiha.test@yopmail.com",
-        "contactPhone": "21345789"
-      }
     }
   ]
 }
