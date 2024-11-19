@@ -2,9 +2,17 @@ import React from 'react'
 import { Link, useLoaderData, useParams } from 'react-router-dom';
 import { FaArrowLeft, FaMapMarker } from 'react-icons/fa';
 
-const JobPage = () => {
+const JobPage = ({ deleteJob }) => {
     const { id } = useParams();
     const job = useLoaderData();
+
+    const deleteJobClick = (jobId) => {
+        const confirm = window.confirm('Are you sure? This job will no longer to return.')
+
+        if (!confirm) return;
+
+        deleteJob(jobId);
+    }
 
     return (
         <>
@@ -26,7 +34,7 @@ const JobPage = () => {
                                 className="bg-white p-6 rounded-lg shadow-md text-center md:text-left">
                                 <div className="text-gray-500 mb-4">{job.type}</div>
                                 <h1 className="text-3xl font-bold mb-4">
-                                    Senior React Developer
+                                    {job.title}
                                 </h1>
                                 <div
                                     className="text-gray-500 mb-4 flex align-middle justify-center md:justify-start">
@@ -72,7 +80,9 @@ const JobPage = () => {
                                 >Edit Job
                                 </Link>
                                 <button
-                                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block">
+                                    className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
+                                    onClick={() => deleteJobClick(job.id)}
+                                >
                                     Delete Job
                                 </button>
                             </div >
