@@ -8,11 +8,20 @@ class WeatherAPI {
         const searchParams = new URLSearchParams({
             appid: API_CONFIG.API_KEY,
             ...params,
-
         })
         return `${endpoint}?${searchParams.toString()}`
     }
-    private fetchData() { }
+
+    private async fetchData<T>(url: string): Promise<T> {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`Weather Api Error: ${response.statusText}`)
+        }
+
+        return response.json();
+    }
+
     async getCurrentWeather() { }
     async getForecast() { }
     async reverseGeocode() { }
