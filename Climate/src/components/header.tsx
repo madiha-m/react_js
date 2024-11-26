@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
-    const { theme } = useTheme();
+    const { theme, setTheme } = useTheme();
 
     return (
         <header className='sticky top-0 z-50 border-b bg-background/95 backdrop-blur py-2 supports-[backdrop-filter]:bg-background/60'>
@@ -17,6 +17,7 @@ const Header = () => {
                 <div>
                     {/* Search */}
                     {/* Theme toggle */}
+                    <div onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>toggle</div>
                 </div>
             </div>
         </header>
