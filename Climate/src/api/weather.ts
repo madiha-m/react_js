@@ -54,3 +54,5 @@ class WeatherAPI {
     }
 
 }
+
+export const weatherApi = new WeatherAPI();
