@@ -6,7 +6,7 @@ const Dashboard = () => {
     return (
         <div>
             {/* Favorite Cities */}
-            <div>
+            <div className='flex items-center justify-between'>
                 <h1 className='text-xl font-bold tracking-tight'>My Location</h1>
                 <Button variant={'outline'}
                     size={"icon"}
