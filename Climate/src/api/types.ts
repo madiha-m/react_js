@@ -58,3 +58,9 @@ export interface GeocodingResponse {
     country: string;
     state?: string;
 }
+
+export interface GeoLocationState {
+    coordinates: Coordinates | null;
+    error: string | null;
+    isLoading: boolean;
+}
