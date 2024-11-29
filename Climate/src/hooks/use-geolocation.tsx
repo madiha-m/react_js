@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 
 export function useGeolocation() {
 
-    // useState hook for taking geoLocation data, its types created in the types.ts file
+    const [locationData, setLocationData] = useState<GeoLocationState>({
+        coordinates: null,
+        error: null,
+        isLoading: true,
+    });
 
     /*
      Get the location 
