@@ -9,7 +9,9 @@ export function useGeolocation() {
         isLoading: true,
     });
 
-    const getLocation = () => { };
+    const getLocation = () => {
+        setLocationData((prev) => ({ ...prev, isLoading: true, error: null }));
+    };
 
     useEffect(() => {
         getLocation();
