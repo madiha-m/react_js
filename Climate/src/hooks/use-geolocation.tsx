@@ -15,12 +15,8 @@ export function useGeolocation() {
         getLocation();
     }, []);
 
-    /*
-    return 
-    
-    - locationData with spread operator, as using refresh btn getting data manually
-
-    - call getLocation fun as well
-     */
-
+    return {
+        ...locationData,
+        getLocation
+    }
 }
