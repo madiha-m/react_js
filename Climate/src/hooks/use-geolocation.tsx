@@ -9,13 +9,11 @@ export function useGeolocation() {
         isLoading: true,
     });
 
-    /*
-     Get the location 
+    const getLocation = () => { };
 
-     - create a getLocation() 
-
-     - call the function while app loading
-     */
+    useEffect(() => {
+        getLocation();
+    }, []);
 
     /*
     return 
