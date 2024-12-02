@@ -49,8 +49,11 @@ export function useGeolocation() {
                     default:
                         errorMessage = "An unknown error occurred."
                 }
-
-                
+                setLocationData({
+                    coordinates: null,
+                    error: errorMessage,
+                    isLoading: false,
+                })
             }
         );
     };
