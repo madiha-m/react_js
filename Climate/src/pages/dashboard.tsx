@@ -5,7 +5,14 @@ import React from 'react'
 
 const Dashboard = () => {
     const { coordinates, error, getLocation, isLoading } = useGeolocation();
-    console.log(coordinates);
+    // console.log(coordinates);
+
+    const handleRefresh = () => {
+        getLocation();
+        if (coordinates) {
+            // reload weather data
+        }
+    }
 
     return (
         <div className='space-y-4'>
@@ -14,7 +21,7 @@ const Dashboard = () => {
                 <h1 className='text-xl font-bold tracking-tight'>My Location</h1>
                 <Button variant={'outline'}
                     size={"icon"}
-                // onClick={handleRefresh}   // fun not exist right now
+                    onClick={handleRefresh}
                 // disabled={ }              // will be disabled while fetching current/forecast data
                 >
                     <RefreshCw className='h-4 w-4' />
