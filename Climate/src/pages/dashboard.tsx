@@ -1,3 +1,4 @@
+import WeatherSkeleton from '@/components/loading-skeleton'
 import { Button } from '@/components/ui/button'
 import { useGeolocation } from '@/hooks/use-geolocation'
 import { RefreshCw } from 'lucide-react'
@@ -19,8 +20,8 @@ const Dashboard = () => {
         }
     }
 
-    if(locationLoading){
-        // show weather skeleton
+    if (locationLoading) {
+        return <WeatherSkeleton />
     }
 
     return (
