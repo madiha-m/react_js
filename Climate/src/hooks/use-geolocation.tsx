@@ -29,7 +29,30 @@ export function useGeolocation() {
                 error: null,
                 isLoading: false,
             });
-        });
+        },
+            (error) => {
+                let errorMessage: string;
+
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        errorMessage =
+                            "Location permission denied. Please enable location access.";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        errorMessage =
+                            "Location information is unavailable.";
+                        break;
+                    case error.TIMEOUT:
+                        errorMessage =
+                            "Location request time out.";
+                        break;
+                    default:
+                        errorMessage = "An unknown error occurred."
+                }
+
+                
+            }
+        );
     };
 
     useEffect(() => {
