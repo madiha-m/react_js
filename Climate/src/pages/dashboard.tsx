@@ -4,7 +4,12 @@ import { RefreshCw } from 'lucide-react'
 import React from 'react'
 
 const Dashboard = () => {
-    const { coordinates, error, getLocation, isLoading } = useGeolocation();
+    const {
+        coordinates,
+        error: locationError,
+        getLocation,
+        isLoading: locationLoading
+    } = useGeolocation();
     // console.log(coordinates);
 
     const handleRefresh = () => {
@@ -12,6 +17,10 @@ const Dashboard = () => {
         if (coordinates) {
             // reload weather data
         }
+    }
+
+    if(locationLoading){
+        // show weather skeleton
     }
 
     return (
