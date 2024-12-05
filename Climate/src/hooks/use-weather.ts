@@ -4,15 +4,15 @@ import React from 'react'
 import { useQuery } from 'react-query'
 
 export const WEATHER_KEYS = {
-    weather: (cords: Coordinates) => {
+    weather: (cords: Coordinates) =>
         ["weather", cords] as const
-    },
-    forecast: (cords: Coordinates) => {
+    ,
+    forecast: (cords: Coordinates) =>
         ["forecast", cords] as const
-    },
-    location: (cords: Coordinates) => {
+    ,
+    location: (cords: Coordinates) =>
         ["location", cords] as const
-    }
+
 } as const;
 
 export function useWeatherQuery(coordinates: Coordinates | null) {
