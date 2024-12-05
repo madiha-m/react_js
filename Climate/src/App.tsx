@@ -7,7 +7,18 @@ import CityPage from './pages/city-page'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
-const queryClient = new QueryClient();
+const MINUTE = 60 * 1000;
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * MINUTE,
+      cacheTime: 10 * MINUTE, //gcTime.
+      retry: false,
+      refetchOnWindowFocus: false,
+    }
+  }
+});
 
 function App() {
   return (
@@ -23,7 +34,7 @@ function App() {
             </Layout>
           </ThemeProvider>
         </BrowserRouter>
-        <ReactQueryDevtools initialIsOpen={false}/>
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   )
