@@ -1,7 +1,7 @@
+import { useQuery } from 'react-query'
 import { Coordinates } from '@/api/types'
 import { weatherApi } from '@/api/weather'
 import React from 'react'
-import { useQuery } from 'react-query'
 
 export const WEATHER_KEYS = {
     weather: (cords: Coordinates) =>
@@ -21,7 +21,7 @@ export function useWeatherQuery(coordinates: Coordinates | null) {
         queryFn: () =>
             coordinates ? weatherApi.getCurrentWeather(coordinates) : null,
         enabled: !!coordinates,
-    })
+    });
 }
 
 export function useForecastQuery(coordinates: Coordinates | null) {
@@ -30,7 +30,7 @@ export function useForecastQuery(coordinates: Coordinates | null) {
         queryFn: () =>
             coordinates ? weatherApi.getForecast(coordinates) : null,
         enabled: !!coordinates,
-    })
+    });
 }
 
 export function useReverseGeocodeQuery(coordinates: Coordinates | null) {
@@ -39,5 +39,5 @@ export function useReverseGeocodeQuery(coordinates: Coordinates | null) {
         queryFn: () =>
             coordinates ? weatherApi.reverseGeocode(coordinates) : null,
         enabled: !!coordinates,
-    })
+    });
 }

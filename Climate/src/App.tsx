@@ -16,6 +16,9 @@ const queryClient = new QueryClient({
       cacheTime: 10 * MINUTE, //gcTime.
       retry: false,
       refetchOnWindowFocus: false,
+      onError: (error) => {
+        console.error("Query error:", error);
+      }
     }
   }
 });
