@@ -2,7 +2,7 @@ import WeatherError from '@/components/display-error'
 import WeatherSkeleton from '@/components/loading-skeleton'
 import { Button } from '@/components/ui/button'
 import { useGeolocation } from '@/hooks/use-geolocation'
-import { useReverseGeocodeQuery } from '@/hooks/use-weather'
+import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from '@/hooks/use-weather'
 import { RefreshCw } from 'lucide-react'
 import React from 'react'
 
@@ -14,13 +14,17 @@ const Dashboard = () => {
         isLoading: locationLoading
     } = useGeolocation();
 
+    const weatherQuery = useWeatherQuery(coordinates);
+    const forecastQuery = useForecastQuery(coordinates);
     const locationQuery = useReverseGeocodeQuery(coordinates);
-    console.log(locationQuery);
 
     const handleRefresh = () => {
         getLocation();
         if (coordinates) {
-            // reload weather data
+            // refetch all queries
+            weatherQuery.refetch();
+            forecastQuery.refetch();
+            locationQuery.refetch();
         }
     }
 
