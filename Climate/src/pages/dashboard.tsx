@@ -1,6 +1,7 @@
 import WeatherError from '@/components/display-error'
 import WeatherSkeleton from '@/components/loading-skeleton'
 import { Button } from '@/components/ui/button'
+import CurrentWeather from '@/components/ui/current-weather'
 import { useGeolocation } from '@/hooks/use-geolocation'
 import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from '@/hooks/use-weather'
 import { RefreshCw } from 'lucide-react'
@@ -21,7 +22,7 @@ const Dashboard = () => {
     const handleRefresh = () => {
         getLocation();
         if (coordinates) {
-            // refetch all queries
+            // refetch all queries for weather data
             weatherQuery.refetch();
             forecastQuery.refetch();
             locationQuery.refetch();
@@ -33,15 +34,35 @@ const Dashboard = () => {
     }
 
     if (locationError) {
-        return <WeatherError title={'Location Error'} desc={locationError} currentLocation={getLocation} />
+        return <WeatherError
+            title={'Location Error'}
+            desc={locationError}
+            btnCall={getLocation}
+            btn='Enable Location'
+        />
     }
 
     if (!coordinates) {
         return <WeatherError
             title={'Location Required'}
             desc={'Please enable location access to see your local weather'}
-            currentLocation={getLocation}
+            btnCall={getLocation}
+            btn='Enable Location'
         />
+    }
+
+    const locationName = locationQuery.data?.[0];
+
+    if (weatherQuery.error || forecastQuery.error) {
+        return <WeatherError
+            desc={'Failed to fetch weather data. Please try again.'}
+            btnCall={handleRefresh}
+            btn={'Retry'}
+        />
+    }
+
+    if (!weatherQuery.data || !forecastQuery.data) {
+        return <WeatherSkeleton />
     }
 
     return (
@@ -52,12 +73,26 @@ const Dashboard = () => {
                 <Button variant={'outline'}
                     size={"icon"}
                     onClick={handleRefresh}
-                // disabled={ }              // will be disabled while fetching current/forecast data
+                    disabled={weatherQuery.isFetching || forecastQuery.isFetching}
                 >
-                    <RefreshCw className='h-4 w-4' />
+                    <RefreshCw className={`h-4 w-4 ${weatherQuery.isFetching ? "animate-spin" : ""
+                        }`} />
                 </Button>
             </div>
-            {/* Current and Hourly weather */}
+            <div className='grid gap-6'>
+                <div>
+                    {/* current weather */}
+                    <CurrentWeather
+                        data={weatherQuery.data}
+                        locationName={locationName}
+                    />
+                    {/* hourly weather */}
+                </div>
+                <div>
+                    {/* details */}
+                    {/* forecast */}
+                </div>
+            </div>
         </div>
     )
 }

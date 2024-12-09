@@ -3,7 +3,7 @@ import { Alert, AlertDescription, AlertTitle } from './ui/alert'
 import { AlertTriangle, MapPin } from 'lucide-react'
 import { Button } from './ui/button'
 
-const WeatherError = ({ title, desc, currentLocation }: any) => {
+const WeatherError = ({ title ='Error', desc, btnCall, btn = 'Enable It' }: any) => {
   return (
     <Alert variant="destructive">
       <AlertTriangle className="h-4 w-4" />
@@ -13,12 +13,12 @@ const WeatherError = ({ title, desc, currentLocation }: any) => {
           {desc}
         </p>
         <Button
-          onClick={currentLocation}
+          onClick={btnCall}
           variant={"outline"}
           className='w-fit'
         >
           <MapPin className='mr-2 h-4 w-4' />
-          Enable Location
+          {btn}
         </Button>
       </AlertDescription>
     </Alert>
