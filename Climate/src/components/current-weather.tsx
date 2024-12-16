@@ -8,6 +8,9 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
         main: { temp, feels_like, temp_min, temp_max, humidity },
         wind: { speed }
     } = data;
+
+    const formatTemp = (temp:number)=> `${Math.round(temp)}°C`;
+
     return (
         <Card className='overflow-hidden'>
             <CardContent className='p-6'>
@@ -28,7 +31,9 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
                         </div>
 
                         <div className="flex items-center gap-2">
-                            <p>{temp}</p>
+                            <p className='text-7xl font-bold tracking-tighter'>
+                                {formatTemp(temp)}
+                            </p>
                         </div>
                     </div>
                 </div>
