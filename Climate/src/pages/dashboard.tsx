@@ -1,7 +1,7 @@
 import WeatherError from '@/components/display-error'
 import WeatherSkeleton from '@/components/loading-skeleton'
 import { Button } from '@/components/ui/button'
-import CurrentWeather from '@/components/ui/current-weather'
+import CurrentWeather from '@/components/current-weather'
 import { useGeolocation } from '@/hooks/use-geolocation'
 import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from '@/hooks/use-weather'
 import { RefreshCw } from 'lucide-react'
