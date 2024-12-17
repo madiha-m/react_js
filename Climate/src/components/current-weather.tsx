@@ -34,6 +34,15 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
                             <p className='text-7xl font-bold tracking-tighter'>
                                 {formatTemp(temp)}
                             </p>
+
+                             <div>
+                                <div>
+                                    {/* Show Humidity here */}
+                                </div>
+                                <div>
+                                    {/* Show Wind Speed here */}
+                                </div>
+                             </div>
                         </div>
                     </div>
                 </div>
