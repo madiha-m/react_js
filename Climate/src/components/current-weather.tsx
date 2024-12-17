@@ -1,6 +1,7 @@
 import { CurrentWeatherProps } from '@/api/types'
 import { Card, CardContent } from './ui/card'
 import React from 'react'
+import { ArrowDown, ArrowUp, Droplets } from 'lucide-react';
 
 const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
     const {
@@ -9,7 +10,7 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
         wind: { speed }
     } = data;
 
-    const formatTemp = (temp:number)=> `${Math.round(temp)}°C`;
+    const formatTemp = (temp: number) => `${Math.round(temp)}°`;
 
     return (
         <Card className='overflow-hidden'>
@@ -35,14 +36,35 @@ const CurrentWeather = ({ data, locationName }: CurrentWeatherProps) => {
                                 {formatTemp(temp)}
                             </p>
 
-                             <div>
-                                <div>
-                                    {/* Show Humidity here */}
+                            <div className='space-y-1'>
+                                <p className="text-sm font-medium text-muted-foreground">
+                                    Feels like {formatTemp(feels_like)}
+                                </p>
+                                <div className='flex gap-2 text-sm font-medium'>
+                                    <span className="flex items-center gap-1 text-blue-500">
+                                        <ArrowDown className='h-3 w-3' />
+                                        {formatTemp(temp_min)}
+                                    </span>
+                                    <span className="flex items-center gap-1 text-red-500">
+                                        <ArrowUp className='h-3 w-3' />
+                                        {formatTemp(temp_max)}
+                                    </span>
                                 </div>
-                                <div>
-                                    {/* Show Wind Speed here */}
+                            </div>
+                        </div>
+
+                        <div>
+                            {/* Show humidity */}
+                        </div>
+
+                        <div className='grid grid-cols-2 gap-4'>
+                            <div className='flex items-center gap-2'>
+                                <Droplets className='h-4 w-4 text-blue-500' />
+                                <div className="space-y-0.5">
+                                    <p className="text-sm font-medium">Humidity</p>
+                                    <p className="text-sm text-muted-foreground">{humidity}%</p>
                                 </div>
-                             </div>
+                            </div>
                         </div>
                     </div>
                 </div>
