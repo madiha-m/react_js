@@ -65,7 +65,13 @@ export interface GeoLocationState {
     isLoading: boolean;
 }
 
+// Props
+
 export interface CurrentWeatherProps {
     data: WeatherData;
     locationName?: GeocodingResponse
+}
+
+export interface HourlyTemperatureProps {
+    data: ForecastData;
 }

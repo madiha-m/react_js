@@ -6,6 +6,7 @@ import { useGeolocation } from '@/hooks/use-geolocation'
 import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from '@/hooks/use-weather'
 import { RefreshCw } from 'lucide-react'
 import React from 'react'
+import HourlyTemperature from '@/components/hourly-temperature'
 
 const Dashboard = () => {
     const {
@@ -86,7 +87,10 @@ const Dashboard = () => {
                         data={weatherQuery.data}
                         locationName={locationName}
                     />
-                    {/* hourly weather */}
+                    {/* hourly Temperature */}
+                    <HourlyTemperature
+                        data={forecastQuery.data}
+                    />
                 </div>
                 <div>
                     {/* details */}
