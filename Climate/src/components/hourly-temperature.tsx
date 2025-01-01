@@ -1,7 +1,7 @@
 import { HourlyTemperatureProps } from '@/api/types'
 import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
+import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { format } from 'date-fns'
 
 const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
@@ -43,6 +43,22 @@ const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
               />
 
               {/* tooltip of the line chart */}
+              <Tooltip
+                content={({active, payload})=>{
+                  if(active && payload && payload.length){
+                    return(
+                      <div>
+                        <div>
+                          <div>
+                            <span>Temperature</span>
+                            <span>{payload[0].value}°</span>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }
+                }}
+              />
               {/* temperature line */}
               <Line
                 type="monotone"
