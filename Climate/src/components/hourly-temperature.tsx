@@ -1,7 +1,7 @@
 import { HourlyTemperatureProps } from '@/api/types'
 import React from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { Line, LineChart, ResponsiveContainer } from 'recharts'
+import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 import { format } from 'date-fns'
 
 const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
@@ -12,7 +12,7 @@ const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
   }))
 
   return (
-    <Card>
+    <Card className="flex-1">
       <CardHeader>
         <CardTitle>
           Today's Temperature
@@ -27,7 +27,21 @@ const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
             <LineChart
               data={chartData}
             >
-              <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+              <XAxis
+                dataKey="time"
+                stroke='#888888'
+                fontSize={12}
+                tickLine={false}
+                axisLine={false}
+              />
+              <YAxis
+                stroke='#888888'
+                fontSize={12}
+                tickLine={false}
+                axisLine={false}
+                tickFormatter={(value) => `${value}°`}
+              />
+              {/* <Line type="monotone" dataKey="uv" stroke="#8884d8" /> */}
             </LineChart>
           </ResponsiveContainer>
         </div>

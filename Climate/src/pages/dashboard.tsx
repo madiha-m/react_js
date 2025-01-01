@@ -71,8 +71,9 @@ const Dashboard = () => {
             {/* Favorite Cities */}
             <div className='flex items-center justify-between'>
                 <h1 className='text-xl font-bold tracking-tight'>My Location</h1>
-                <Button variant={'outline'}
-                    size={"icon"}
+                <Button
+                    variant='outline'
+                    size="icon"
                     onClick={handleRefresh}
                     disabled={weatherQuery.isFetching || forecastQuery.isFetching}
                 >
@@ -80,8 +81,9 @@ const Dashboard = () => {
                         }`} />
                 </Button>
             </div>
+
             <div className='grid gap-6'>
-                <div>
+                <div className='flex flex-col lg:flex-row gap-4'>
                     {/* current weather */}
                     <CurrentWeather
                         data={weatherQuery.data}
