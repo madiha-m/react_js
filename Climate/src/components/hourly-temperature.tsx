@@ -42,7 +42,8 @@ const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
                 tickFormatter={(value) => `${value}°`}
               />
 
-              {/* tooltip opf the line chart */}
+              {/* tooltip of the line chart */}
+              {/* temperature line */}
               <Line
                 type="monotone"
                 dataKey="temp"
@@ -50,6 +51,16 @@ const HourlyTemperature = ({ data }: HourlyTemperatureProps) => {
                 strokeWidth={2}
                 dot={false}
               />
+              {/* Feels like line */}
+              <Line
+                type="monotone"
+                dataKey="feels_like"
+                stroke="#64748b"
+                strokeWidth={2}
+                dot={false}
+                strokeDasharray="5 5"
+              />
+
             </LineChart>
           </ResponsiveContainer>
         </div>
