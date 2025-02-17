@@ -1,7 +1,7 @@
 import React from "react";
 
 const Keys = ({ label }) => {
-  return <div>keys</div>;
+  return <div>{label}</div>;
 };
 
 export default Keys;

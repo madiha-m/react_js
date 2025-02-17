@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Keys from "./keys";
 
 const calculator = () => {
@@ -24,12 +24,20 @@ const calculator = () => {
     "EQUALS",
   ];
 
+  const [showResult, setShowResult] = useState(false);
+
+  const operationClass =
+    "text-[1.2rem] tracking-[2px] flex gap-[5px] items-center text-[rgba(255,255,255,0.5)] justify-end";
+  const resultClass = "text-[1.7rem]";
+
   return (
     <div className="min-w-[320px] bg-black flex flex-col gap-4 p-4 rounded-2xl">
       <div className="overflow-x-auto bg-[#141414] min-h-[100px] flex items-end justify-end flex-col p-4 rounded-[10px]">
-        <div>RESULT</div>
+        <div className={`${showResult ? resultClass : operationClass}`}>
+          RESULT
+        </div>
       </div>
-      <div>
+      <div className="">
         {keys.map((item, index) => (
           <Keys
             label={item}
