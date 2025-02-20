@@ -37,11 +37,12 @@ const calculator = () => {
           RESULT
         </div>
       </div>
-      <div className="">
+      <div className="grid grid-cols-[repeat(4,1fr)] gap-[0.3rem]">
         {keys.map((item, index) => (
           <Keys
             label={item}
             key={index}
+            keyClass={item === "EQUALS" && "equals"}
           />
         ))}
       </div>
