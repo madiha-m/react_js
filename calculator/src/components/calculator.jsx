@@ -41,6 +41,7 @@ const Calculator = () => {
 
   const [showResult, setShowResult] = useState(false);
   const [display, setDisplay] = useState("");
+  const [isRad, setIsRad] = useState(false);
 
   const maxLimit = 15;
 
@@ -65,7 +66,9 @@ const Calculator = () => {
       if (display == "" || isOperator(display[display.length - 1])) return;
       setDisplay(display + value);
     } else if (value === "=") calculateResult();
-    else if (display.length >= maxLimit)
+    else if (value === "Rad | Deg") {
+      setIsRad(!isRad);
+    } else if (display.length >= maxLimit)
       alert(`maximum characters allowed : ${maxLimit}`);
     else setDisplay(display + value);
   }
@@ -93,6 +96,7 @@ const Calculator = () => {
             keyClass={
               item === "=" ? "equal-btn" : item === "Rad | Deg" ? "deg-btn" : ""
             }
+            isRad={isRad}
             onButtonClick={handleButton}
           />
         ))}
