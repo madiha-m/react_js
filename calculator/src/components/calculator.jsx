@@ -3,25 +3,40 @@ import Keys from "./keys";
 
 const Calculator = () => {
   const keys = [
-    "AC",
-    "C",
+    "Rad | Deg",
+    "x!",
+    "(",
+    ")",
     "%",
-    "/",
+    "CE",
+    "Inv",
+    "sin",
+    "ln",
     "7",
     "8",
     "9",
-    "*",
+    "÷",
+    "π",
+    "cos",
+    "log",
     "4",
     "5",
     "6",
-    "-",
+    "x",
+    "e",
+    "tan",
+    "√",
     "1",
     "2",
     "3",
-    "+",
-    ".",
+    "-",
+    "Ans",
+    "EXP",
+    "xʸ",
     "0",
-    "EQUALS",
+    ".",
+    "=",
+    "+",
   ];
 
   const [showResult, setShowResult] = useState(false);
@@ -49,7 +64,7 @@ const Calculator = () => {
     else if (isOperator(value)) {
       if (display == "" || isOperator(display[display.length - 1])) return;
       setDisplay(display + value);
-    } else if (value === "EQUALS") calculateResult();
+    } else if (value === "=") calculateResult();
     else if (display.length >= maxLimit)
       alert(`maximum characters allowed : ${maxLimit}`);
     else setDisplay(display + value);
@@ -70,12 +85,14 @@ const Calculator = () => {
           {display}
         </div>
       </div>
-      <div className="grid grid-cols-[repeat(4,1fr)] gap-[0.3rem]">
+      <div className="grid grid-cols-[repeat(7,1fr)] gap-[0.3rem]">
         {keys.map((item, index) => (
           <Keys
             label={item}
             key={index}
-            keyClass={item === "EQUALS" && "equals"}
+            keyClass={
+              item === "=" ? "equal-btn" : item === "Rad | Deg" ? "deg-btn" : ""
+            }
             onButtonClick={handleButton}
           />
         ))}
