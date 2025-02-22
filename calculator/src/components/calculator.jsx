@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Keys from "./keys";
 import Display from "./display";
 import { keys } from "../utils/constants";
-import { handleButtonClick } from "../utils/calculatorUtils";
+import useCalculator from "../hooks/useCalculator";
 
 const Calculator = () => {
-  const [showResult, setShowResult] = useState(false);
-  const [display, setDisplay] = useState("");
-  const [result, setResult] = useState("");
-  const [isRad, setIsRad] = useState(true);
+  const {
+    display,
+    isRad,
+    useHandleButtonClick, // Use the renamed function
+  } = useCalculator(); // Use the custom hook
 
   return (
     <div className="min-w-[700px] bg-black flex flex-col gap-4 p-4 rounded-2xl">
@@ -22,10 +23,7 @@ const Calculator = () => {
               item === "=" ? "equal-btn" : item === "Rad | Deg" ? "deg-btn" : ""
             }
             isRad={isRad}
-            onButtonClick={(value) =>
-              (handleButtonClick =
-                (value, display, setDisplay, setShowResult, isRad, setIsRad))
-            }
+            onButtonClick={(value) => useHandleButtonClick(value)}
           />
         ))}
       </div>

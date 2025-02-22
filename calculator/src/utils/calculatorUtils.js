@@ -28,11 +28,14 @@ export const handleButtonClick = (
   setIsRad
 ) => {
   setShowResult(false);
-  if (value === "AC") setDisplay(display.slice(0, -1));
-  else if (isOperator(value)) {
+  if (value === "AC") {
+    if (display !== "Error") {
+      setDisplay(display.slice(0, -1));
+    } else setDisplay(0);
+  } else if (isOperator(value)) {
     if (display == "" || isOperator(display[display.length - 1])) return;
     setDisplay(display + value);
-  } else if (value === "=") calculateResult();
+  } else if (value === "=") calculateResult(display, setDisplay, setShowResult);
   else if (value === "Rad | Deg") {
     setIsRad(!isRad);
   } else if (display.length >= MAX_LIMIT) {
