@@ -40,6 +40,76 @@ const Question1 = () => {
           State ko update krany k lye prev state ly k aty hn, then usmin add
           krty hn
         </p>
+        <p>
+          <ul>
+            <li>
+              <p>
+                React schedules a state update with the value{" "}
+                <code>count + 1</code>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <code>setCount</code> is called multiple times in the same
+                render cycle, all calls will use the{" "}
+                <strong>same initial value</strong> of <code>count</code>.
+              </p>
+            </li>
+            <li>
+              <p>
+                This can lead to unexpected behavior if you rely on the updated
+                state immediately.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <ol start="1">
+          <li>
+            <p>
+              <strong>
+                <code>setCount(count + 1)</code>
+              </strong>
+              :
+            </p>
+            <ul>
+              <li>
+                <p>
+                  This directly uses the <strong>current value</strong> of{" "}
+                  <code>count</code> to update the state.
+                </p>
+              </li>
+              <li>
+                <p>
+                  If <code>setCount</code> is called multiple times in the same
+                  render cycle, it may not work as expected due to how React
+                  batches state updates.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <p>
+              <strong>
+                <code>setCount((prev) =&gt; prev + 1)</code>
+              </strong>
+              :
+            </p>
+            <ul>
+              <li>
+                <p>
+                  This uses the <strong>previous state value</strong> (
+                  <code>prev</code>) to update the state.
+                </p>
+              </li>
+              <li>
+                <p>
+                  It ensures that the state update is based on the most recent
+                  value, even if multiple updates are batched together.
+                </p>
+              </li>
+            </ul>
+          </li>
+        </ol>
       </div>
     </div>
   );
